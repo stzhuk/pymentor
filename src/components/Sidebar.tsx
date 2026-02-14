@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
 interface SidebarProps {
@@ -7,6 +8,11 @@ interface SidebarProps {
 
 export const Sidebar: React.FC<SidebarProps> = ({ activeSection }) => {
   const { t, i18n } = useTranslation();
+
+  const location = useLocation();
+  const pathname = location?.pathname || "/";
+
+  console.log("Current pathname:", pathname);
 
   const handleLanguageChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     i18n.changeLanguage(e.target.value);
@@ -48,29 +54,40 @@ export const Sidebar: React.FC<SidebarProps> = ({ activeSection }) => {
       </h1>
 
       {/* NAV */}
-      <nav className="space-y-2 mb-10 text-sm font-medium">
-        <a
-          href="/"
-          className={`sidebar-link block px-4 py-2 rounded-xl transition ${
-            activeSection === "home"
-              ? "bg-blue-100 dark:bg-slate-700"
-              : "hover:bg-blue-100 dark:hover:bg-slate-700"
-          }`}
-        >
-          {t("sidebar.home")}
-        </a>
+      {pathname == "/" ? (
+        <nav className="space-y-2 mb-10 text-sm font-medium">
+          <a
+            href="/"
+            className={`sidebar-link block px-4 py-2 rounded-xl transition ${
+              activeSection === "home"
+                ? "bg-blue-100 dark:bg-slate-700"
+                : "hover:bg-blue-100 dark:hover:bg-slate-700"
+            }`}
+          >
+            {t("sidebar.home")}
+          </a>
 
-        <a
-          href="/intro"
-          className={`sidebar-link block px-4 py-2 rounded-xl transition ${
-            activeSection === "intro"
-              ? "bg-blue-100 dark:bg-slate-700"
-              : "hover:bg-blue-100 dark:hover:bg-slate-700"
-          }`}
-        >
-          {t("sidebar.setupEnv")}
-        </a>
-      </nav>
+          <a
+            href="#block0"
+            className={`sidebar-link block px-4 py-2 rounded-xl transition ${
+              activeSection === "intro"
+                ? "bg-blue-100 dark:bg-slate-700"
+                : "hover:bg-blue-100 dark:hover:bg-slate-700"
+            }`}
+          >
+            {t("sidebar.setupEnv")}
+          </a>
+        </nav>
+      ) : (
+        <nav className="mb-6 text-sm font-medium">
+          <a
+            href="/"
+            className="block px-4 py-2 rounded-xl bg-blue-100 dark:bg-slate-700"
+          >
+            {t("sidebar.backToRoadmap")}
+          </a>
+        </nav>
+      )}
 
       {/* LANGUAGE */}
       <div className="mb-6">

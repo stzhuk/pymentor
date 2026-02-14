@@ -7,7 +7,7 @@ export const IntroPage: React.FC = () => {
   const { t } = useTranslation();
 
   return (
-    <div className="bg-gradient-to-br from-slate-100 via-slate-200 to-slate-100 dark:from-slate-900 dark:via-slate-800 dark:to-slate-900 font-sans text-gray-800 dark:text-gray-200 transition min-h-screen">
+    <div className="bg-linear-to-br from-slate-100 via-slate-200 to-slate-100 dark:from-slate-900 dark:via-slate-800 dark:to-slate-900 font-sans text-gray-800 dark:text-gray-200 transition min-h-screen">
       <Layout sidebar={<Sidebar activeSection="intro" />}>
         {/* HEADER */}
         <section>
