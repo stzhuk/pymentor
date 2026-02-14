@@ -5,7 +5,7 @@ import "./App.css";
 
 function App() {
   return (
-    <Router>
+    <Router basename="/pymentor/">
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/intro" element={<IntroPage />} />
