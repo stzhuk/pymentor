@@ -112,7 +112,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ activeSection }) => {
       </h1>
 
       {/* NAV */}
-      {pathname == "/" ? (
+      {pathname === "/" ? (
         <nav className="space-y-2 mb-10 text-sm font-medium">
           <a
             href="#top"
@@ -139,7 +139,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ activeSection }) => {
       ) : (
         <nav className="space-y-2 mb-10 text-sm font-medium">
           <a
-            href="/pymentor/"
+            href="/pymentor"
             className="block px-4 py-2 rounded-xl transition bg-blue-100 dark:bg-slate-700"
           >
             {t("sidebar.backToRoadmap")}
